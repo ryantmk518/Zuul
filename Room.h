@@ -17,6 +17,7 @@ class Room {
   void printMap();
   void printItems();
   Item* takeItem(char* item);
+  Room* getExitRoom(char* direction);
  private:
   char description[999];
   map<const char*, Room*> exitMap;

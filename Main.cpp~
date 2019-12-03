@@ -67,11 +67,11 @@ int main(){
 	(*it)->printMap();
 	cout << "Items in the room: " << endl;
 	(*it)->printItems();
-	if (inv->empty()) {
+	if (inv->empty() == true) {
 	  cout << "You have no items" << endl;
 	}
 	else {
-	  cout << inv->size() << endl;
+	  cout << "Bruh" << endl;
 	  vector<char*>::iterator i;
 	  for (i = inv->begin(); i != inv->end(); ++i) {
 	    cout << *i << endl;

@@ -58,3 +58,13 @@ Item* Room::takeItem(char* item){
   }
   return NULL;
 }
+
+Room* Room::getExitRoom(char* direction) {
+  map<const char*, Room*>::iterator it;
+  for(it = this-> exitMap.begin(); it != this->exitMap.end(); ++it) {
+    if(strcmp(it->first, direction) == 0) {
+      return it->second;
+    }
+  }
+  return 0;
+}
