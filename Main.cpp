@@ -6,19 +6,23 @@
 #include <string.h>
 
 using namespace std;
+//Ryan Thammakhoune. Zuul adventure game with user commands.
 
 
 int main(){
+  //Initialize vectors
   vector<Room*> rList;
   vector<Room*>* roomList = &rList;
   vector<Item*> iList;
   vector<Item*>* itemList = &iList;
 
+  //Char arrays for n,e,s,w
   char North[] = "North"; 
   char East[] = "East";
   char South[] = "South";
   char West[] = "West";
-  
+
+  //Initialize rooms
   Room* r1 = new Room();
   Room* r2 = new Room();
   Room* r3 = new Room();
@@ -35,6 +39,8 @@ int main(){
   Room* r13 = new Room();
   Room* r14 = new Room();
   Room* r15 = new Room();
+
+  //Puts in names and descriptions
   strcpy(r1->getName(),"Distant Woods");
   strcpy(r1->getDescription(), "You begin your hunt in the distant woods. Oddly enough, all the trees are black."); 
   strcpy(r2->getName(), "Black Market");
@@ -66,7 +72,7 @@ int main(){
   strcpy(r14->getDescription(), "Hmmmm.... A dead end.");
   strcpy(r15->getDescription(), "You run towards the opening in the trees until you arrive at the council.");
 
-  
+  //Sets up maps
   r1->getMap()->insert(pair<const char*, Room*>("North" , r3));
   r1->getMap()->insert(pair<const char*, Room*>("South" , r4));
   r2->getMap()->insert(pair<const char*, Room*>("East" , r1));
@@ -91,19 +97,22 @@ int main(){
   r5->getMap()->insert(pair<const char*, Room*>("South" , r1));
   r7->getMap()->insert(pair<const char*, Room*>("West" , r15));
 
+
+  //Implements items
   
   Item* Banana = new Item();
   strcpy(Banana->getName(), "Banana");
   r4->addItems(Banana);
   itemList->push_back(Banana);
   
-      
   
   Item* ShackKey = new Item();
   strcpy(ShackKey->getName(), "Shack Key");
   r5->addItems(ShackKey);
   itemList->push_back(ShackKey);
 
+  //Puts rooms into vector
+  
   roomList->push_back(r1);
   roomList->push_back(r2);
   roomList->push_back(r3);
@@ -138,6 +147,7 @@ int main(){
   bool game = true;
   char input[99];
   while (game == true) {
+    //Finds the current room and displays info
     vector<Room*>::iterator it;
     for (it = roomList->begin(); it !=roomList -> end(); ++it) {
       if (strcmp(current, (*it) ->getName()) == 0) {
@@ -157,6 +167,7 @@ int main(){
 	cin.get(input, 99);
 	cin.clear();
 	cin.ignore(1000, '\n');
+	//Checks which direction has been entered and changes current room to corresponding room
 	if (strcmp(input, "go North") == 0) {
 	  strcpy(current, (*it)->getExitRoom(North)->getName());
 	}
@@ -169,6 +180,7 @@ int main(){
 	else if (strcmp(input, "go South") == 0) {
 	  strcpy(current, (*it)->getExitRoom(South)->getName());
 	}
+	//Checks what item is being picked up
 	else if (strncmp(input, "pick up ", 8) == 0) {
 	  char thing[strlen(input)-8];
 	  for (int a = 8; a < strlen(input); a++) {
@@ -190,6 +202,7 @@ int main(){
 	  }
 	  (*it)->takeItem(thing);
 	}
+	//Checks which item is being dropped
 	else if (strncmp(input, "drop ", 5) == 0) {
 	  char drop[strlen(input)-5];
 	  for (int b = 5; b< strlen(input); b++) {
@@ -203,6 +216,7 @@ int main(){
 	  }
 	  inventory->takeItem(drop);
 	}
+	//Quit
 	else if (strcmp(input, "quit") == 0) {
 	  game = false;
 	}

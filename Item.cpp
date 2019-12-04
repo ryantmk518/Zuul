@@ -4,6 +4,8 @@
 
 using namespace std;
 
+//Gets name for item
+
 Item::Item() {
 
 }

@@ -4,10 +4,13 @@
 #include "Item.h"
 #include <vector>
 
+//Room header. 
+
 using namespace std;
 
 class Room {  
  public:
+  //Various functions seen in room.cpp
   Room();
   char* getName();
   char* getDescription();
@@ -19,6 +22,7 @@ class Room {
   Item* takeItem(char* item);
   Room* getExitRoom(char* direction);
  private:
+  //Private info
   char description[9999];
   map<const char*, Room*> exitMap;
   vector<Item*> itemList;

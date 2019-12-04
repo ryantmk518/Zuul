@@ -1,6 +1,7 @@
  #include <iostream>
 #include <cstring>
 
+//Stores name of item
 using namespace std;
 
 class Item {
