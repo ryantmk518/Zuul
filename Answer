@@ -1,0 +1,16 @@
+go South
+pick up Banana
+(you can drop Banana if you want to test, the hidden room has already been opened)
+go North
+go North
+go North
+pick up Shack Key
+go South
+go South
+go East
+go East
+go North
+go West
+go North
+go West
+Type anything, and the game will end.
