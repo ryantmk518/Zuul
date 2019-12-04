@@ -19,7 +19,7 @@ class Room {
   Item* takeItem(char* item);
   Room* getExitRoom(char* direction);
  private:
-  char description[999];
+  char description[9999];
   map<const char*, Room*> exitMap;
   vector<Item*> itemList;
   char name[99];
